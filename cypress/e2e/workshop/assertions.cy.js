@@ -8,6 +8,7 @@ describe('Context: My First Test', () => {
     
     
     it('Check different types of assetions', () => {
+      /*
         // Should assertion
         cy.get('[for="gender-radio-2"]')
           .should('contain', 'Female')
@@ -18,6 +19,16 @@ describe('Context: My First Test', () => {
           expect(element).to.have.text('Female');
           expect(element).to.have.class('custom-control-label');
         });
+*/
+        cy.get("input[type='checkbox']").then((list)=>{
+          expect(list).to.have.lengthOf(3);
+       
+          cy.wrap(list).first().check({force:true}).should('be.checked');
+            //console.log(list[0]);
+            cy.wrap(list).eq(1).check({force:true}).should('be.checked');
+        });    
+     
+
       });
     
   });
